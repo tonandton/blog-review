@@ -22,7 +22,7 @@
         @endphp
 
         @foreach ($filters as $key => $label)
-            <a href="{{ route('books.index', [...request()->query(),'filter' => $key]) }}"
+            <a href="{{ route('books.index', [...request()->query(), 'filter' => $key]) }}"
                 class="{{ request('filter') === $key || (request('filter') === null && $key === '') ? 'filter-item-active' : 'filter-item' }}">{{ $label }}</a>
         @endforeach
     </div>
@@ -35,6 +35,7 @@
                         <div class="w-full flex-grow sm:w-auto">
                             <a href="{{ route('books.show', $book) }}" class="book-title">{{ $book->title }}</a>
                             <span class="book-author">{{ $book->author }}</span>
+                            <span class="book-author">{{ $book->created_at }}</span>
                         </div>
                         <div>
                             <div class="book-rating">
